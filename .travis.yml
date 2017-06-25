@@ -1,4 +1,4 @@
 language: cpp
 compiler: g++
 
-script: "bash -c ./build.sh"
+script: "bash -c chmod +x ./build.sh; bash -c ./build.sh"
