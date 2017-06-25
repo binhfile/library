@@ -11,8 +11,12 @@ if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
     #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
 endif()
 
-include_directories(../cpp/cpp.cmake)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DTEST_GTEST=1")
+
+include(../cpp/cpp.cmake)
 
 aux_source_directory(src SRC_LIST)
 
-add_executable(unit_tests ${SRC_LIST})
+include_directories(googletest/googletest/include)
+
+add_executable(unit_tests ${SRC_LIST} googletest/googletest/src/gtest-all.cc googletest/googletest/src/gtest-main.cc)
