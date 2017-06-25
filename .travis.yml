@@ -5,7 +5,7 @@ dist: trusty
 script:
   - mkdir build
   - cd build
-  - cmake ..
+  - cmake ../test
   - make
   - ./unit_tests
 notifications:
