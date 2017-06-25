@@ -2,4 +2,6 @@ language: cpp
 compiler: g++
 sudo: required
 dist: xenial
-script: "make || exit 1 ; make test || exit 1"
+script: 
+ - make || exit 1 
+ - make test || exit 1
