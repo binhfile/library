@@ -10,8 +10,12 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DTEST_GTEST=1")
 
-include(../cpp/cpp.cmake)
+include(${CMAKE_SOURCE_DIR}/../cpp/cpp.cmake)
 
-aux_source_directory(src SRC_LIST)
-include_directories(googletest/googletest/include)
-add_executable(unit_tests googletest/googletest/src/gtest-all.cc googletest/googletest/src/gtest-main.cc ${SRC_LIST})
+aux_source_directory(${CMAKE_SOURCE_DIR}/src SRC_LIST)
+
+include_directories(${CMAKE_SOURCE_DIR}/googletest/googletest/include)
+include_directories(${CMAKE_SOURCE_DIR}/googletest/googletest)
+add_executable(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/googletest/googletest/src/gtest-all.cc ${CMAKE_SOURCE_DIR}/googletest/googletest/src/gtest_main.cc ${SRC_LIST})
+target_link_libraries(${PROJECT_NAME} pthread)
+

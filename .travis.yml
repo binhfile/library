@@ -1,12 +1,22 @@
 language: cpp
-compiler: g++
-dist: trusty
+
+matrix:
+  include:
+  - os: linux
+    compiler: gcc
+    addons:
+      apt:
+        sources: ['ubuntu-toolchain-r-test']
+        packages: ['g++-6']
+    env: COMPILER=g++-6
 
 script:
+  - export CXX=${COMPILER}
+  - ${CXX} --version
   - mkdir build
   - cd build
   - cmake ../test
   - make
-  - ./unit_tests
+  - ./library.test
 notifications:
   email: false
