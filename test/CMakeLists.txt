@@ -13,5 +13,5 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DTEST_GTEST=1")
 include(../cpp/cpp.cmake)
 
 aux_source_directory(src SRC_LIST)
-include_directories(googletest/include)
-add_executable(unit_tests ${SRC_LIST} googletest/src/gtest-all.cc googletest/src/gtest-main.cc)
+include_directories(googletest/googletest/include)
+add_executable(unit_tests googletest/googletest/src/gtest-all.cc googletest/googletest/src/gtest-main.cc ${SRC_LIST})
