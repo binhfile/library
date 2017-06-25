@@ -1,8 +1,4 @@
 language: cpp
 compiler: g++
 
-before_install:
-
-install:
-
-script: "bash -c ./build.sh"
+script: "make || exit 1 ; make test || exit 1"
