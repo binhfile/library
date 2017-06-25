@@ -1,4 +1,12 @@
 language: cpp
 compiler: g++
+dist: trusty
 
-script: "make || exit 1 ; make test || exit 1"
+script:
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  - ./unit_tests
+notifications:
+  email: false
